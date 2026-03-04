@@ -41,7 +41,6 @@ public class UserServiceIntegrationTest {
 		assertNull(userRepository.findByUsername("testUsername"));
 
 		User testUser = new User();
-		testUser.setName("testName");
 		testUser.setUsername("testUsername");
 		testUser.setPassword("testPassword");
 
@@ -50,7 +49,6 @@ public class UserServiceIntegrationTest {
 
 		// then
 		assertEquals(testUser.getId(), createdUser.getId());
-		assertEquals(testUser.getName(), createdUser.getName());
 		assertEquals(testUser.getUsername(), createdUser.getUsername());
 		assertNotNull(createdUser.getToken());
 		assertNotNull(createdUser.getCreationDate());
@@ -62,14 +60,12 @@ public class UserServiceIntegrationTest {
 		assertNull(userRepository.findByUsername("testUsername"));
 
 		User testUser = new User();
-		testUser.setName("testName");
 		testUser.setUsername("testUsername");
 		testUser.setPassword("testPassword");
 		userService.createUser(testUser);
 
 		// attempt to create second user with same username
 		User testUser2 = new User();
-		testUser2.setName("testName2");
 		testUser2.setUsername("testUsername");
 		testUser2.setPassword("testPassword2");
 

@@ -31,7 +31,6 @@ public class UserServiceTest {
 		// given
 		testUser = new User();
 		testUser.setId(1L);
-		testUser.setName("testName");
 		testUser.setUsername("testUsername");
 		testUser.setPassword("testPassword");
 
@@ -46,7 +45,6 @@ public class UserServiceTest {
 		Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any());
 
 		assertEquals(testUser.getId(), createdUser.getId());
-		assertEquals(testUser.getName(), createdUser.getName());
 		assertEquals(testUser.getUsername(), createdUser.getUsername());
 		assertNotNull(createdUser.getToken());
 		assertEquals(UserStatus.ONLINE, createdUser.getStatus());
