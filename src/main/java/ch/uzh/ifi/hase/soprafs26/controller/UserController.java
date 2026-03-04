@@ -15,7 +15,6 @@ import java.util.List;
 
 
 /**
- * Testsonarqube
  * User Controller
  * This class is responsible for handling all REST request that are related to
  * the user.
