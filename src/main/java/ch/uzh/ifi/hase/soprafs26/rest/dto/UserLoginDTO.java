@@ -1,22 +1,10 @@
 package ch.uzh.ifi.hase.soprafs26.rest.dto;
 
-public class UserPostDTO {
-
-	private String name;
+public class UserLoginDTO {
 
 	private String username;
 
 	private String password;
-
-	private String bio;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getUsername() {
 		return username;
@@ -32,13 +20,5 @@ public class UserPostDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getBio() {
-		return bio;
-	}
-
-	public void setBio(String bio) {
-		this.bio = bio;
 	}
 }

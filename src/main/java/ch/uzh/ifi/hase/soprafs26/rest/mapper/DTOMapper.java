@@ -5,6 +5,7 @@ import org.mapstruct.factory.Mappers;
 
 import ch.uzh.ifi.hase.soprafs26.entity.User;
 import ch.uzh.ifi.hase.soprafs26.rest.dto.UserGetDTO;
+import ch.uzh.ifi.hase.soprafs26.rest.dto.UserLoginDTO;
 import ch.uzh.ifi.hase.soprafs26.rest.dto.UserPostDTO;
 
 /**
@@ -25,11 +26,20 @@ public interface DTOMapper {
 
 	@Mapping(source = "name", target = "name")
 	@Mapping(source = "username", target = "username")
+	@Mapping(source = "password", target = "password")
+	@Mapping(source = "bio", target = "bio")
 	User convertUserPostDTOtoEntity(UserPostDTO userPostDTO);
+
+	@Mapping(source = "username", target = "username")
+	@Mapping(source = "password", target = "password")
+	User convertUserLoginDTOtoEntity(UserLoginDTO userLoginDTO);
 
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "name", target = "name")
 	@Mapping(source = "username", target = "username")
 	@Mapping(source = "status", target = "status")
+	@Mapping(source = "token", target = "token")
+	@Mapping(source = "creationDate", target = "creationDate")
+	@Mapping(source = "bio", target = "bio")
 	UserGetDTO convertEntityToUserGetDTO(User user);
 }
