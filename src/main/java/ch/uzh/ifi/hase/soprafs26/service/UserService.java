@@ -80,6 +80,22 @@ public class UserService {
 		return user;
 	}
 
+	public void updatePassword(Long id, String newPassword, String token) {
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found."));
+
+		if (!user.getToken().equals(token)) {
+			throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not authorized to change this password.");
+		}
+
+		if (newPassword == null || newPassword.isBlank()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password must not be empty.");
+		}
+
+		user.setPassword(newPassword);
+		userRepository.flush();
+	}
+
 	private void checkIfUserExists(User userToBeCreated) {
 		User userByUsername = userRepository.findByUsername(userToBeCreated.getUsername());
 

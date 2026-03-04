@@ -7,6 +7,7 @@ import ch.uzh.ifi.hase.soprafs26.entity.User;
 import ch.uzh.ifi.hase.soprafs26.rest.dto.UserGetDTO;
 import ch.uzh.ifi.hase.soprafs26.rest.dto.UserLoginDTO;
 import ch.uzh.ifi.hase.soprafs26.rest.dto.UserPostDTO;
+import ch.uzh.ifi.hase.soprafs26.rest.dto.UserPutDTO;
 import ch.uzh.ifi.hase.soprafs26.rest.mapper.DTOMapper;
 import ch.uzh.ifi.hase.soprafs26.service.UserService;
 
@@ -75,5 +76,13 @@ public class UserController {
 	public UserGetDTO logoutUser(@PathVariable Long id) {
 		User loggedOutUser = userService.logoutUser(id);
 		return DTOMapper.INSTANCE.convertEntityToUserGetDTO(loggedOutUser);
+	}
+
+	@PutMapping("/users/{id}/password")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void updatePassword(@PathVariable Long id,
+			@RequestHeader("Authorization") String token,
+			@RequestBody UserPutDTO userPutDTO) {
+		userService.updatePassword(id, userPutDTO.getPassword(), token);
 	}
 }
